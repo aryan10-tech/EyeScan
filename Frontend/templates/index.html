@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlkPVV6u7YGXNdg9taTYEBdYswcTXbyJHP6w&s");
+            /* Background image */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        form {
+
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            /* Rounded corners */
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .input-section {
+            flex-basis: calc(50% - 10px);
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        h1,
+        h2 {
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #1e4857;
+            /* Dark pastel color */
+            width: 100%;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 32px;
+            /* Larger font size */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555555;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            /* Added text shadow */
+            font-size: 20px;
+            /* Font size */
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: calc(100% - 20px);
+            margin-bottom: 20px;
+            padding: 12px;
+            border: 1px solid #dddddd;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="file"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .button-wrapper {
+            width: 100%;
+            text-align: center;
+        }
+
+        input[type="submit"] {
+            background-color: #5097ff;
+            /* Soft pastel blue */
+            color: #ffffff;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+            /* Added shadow effect */
+            font-size: 20px;
+            /* Larger font size */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #88bdc9;
+            /* Darker shade on hover */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+            /* Increased shadow effect on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/submit" method="post" enctype="multipart/form-data">
+        <h1>Enter Symptoms and Upload Images</h1>
+        <div class="input-section">
+            <label for="symptoms">Symptoms:</label><br>
+            <input type="text" name="symptoms" required><br>
+            <input type="text" name="symptoms" required><br>
+            <input type="text" name="symptoms" required><br>
+            <input type="text" name="symptoms"><br>
+            <input type="text" name="symptoms"><br>
+        </div>
+        <div class="input-section">
+            <h2>Upload Images</h2>
+            <div style="margin-bottom: 20px;">
+                <label for="image1">Image 1:</label><br>
+                <input type="file" name="image1" accept="image/*" required><br>
+            </div>
+            <div>
+                <label for="image2">Image 2:</label><br>
+                <input type="file" name="image2" accept="image/*" required><br>
+            </div>
+        </div>
+        <div class="button-wrapper">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>
+
+</html>

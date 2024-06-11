@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f6f7;
+            /* Soft pastel background */
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlkPVV6u7YGXNdg9taTYEBdYswcTXbyJHP6w&s');
+            /* Background image */
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* Cover the entire viewport */
+            background-position: center;
+            /* Center the background image */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .result-container {
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Semi-transparent white background for better readability */
+            display: flex;
+            /* Added flex display */
+            flex-direction: column;
+            /* Align items vertically */
+            justify-content: center;
+            /* Center content horizontally */
+            align-items: center;
+            /* Center content vertically */
+        }
+
+        h2 {
+            font-size: 28px;
+            /* Larger font size */
+            color: #1e4857;
+            /* Dark pastel color */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            /* Added text shadow */
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 24px;
+            /* Larger font size */
+            color: #1e4857;
+            /* Dark pastel color */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            /* Added text shadow */
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            /* Larger font size */
+            color: #555555;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            /* Added text shadow */
+            margin-bottom: 20px;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="result-container">
+        <h2>Submitted successfully</h2>
+        <h3 id="disease">{{ most_likely_disease['Disease'] }}</h3>
+        <p id="description"><strong>Description:</strong> Please wait...</p>
+    </div>
+    <script>
+        // Get the disease name from the HTML content
+        const diseaseName = document.getElementById('disease').textContent.trim();
+        console.log(diseaseName);
+
+        // Fetch the data from the Flask route '/scrape'
+        fetch(`/scrape?disease=${encodeURIComponent(diseaseName)}`)
+            .then(response => response.json())
+            .then(data => {
+                // Update the HTML elements with the scraped data
+                document.getElementById('description').textContent = `Description: ${data.description}`;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                document.getElementById('description').textContent = 'Error fetching data';
+            });
+    </script>
+</body>
+
+</html>
