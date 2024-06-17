@@ -29,6 +29,7 @@ def find_disease(input_symptoms):
         similarities = [input_vector.similarity(disease_vector) for input_vector in input_vectors]
         avg_similarity = sum(similarities) / len(similarities)
         avg_similarities.append(avg_similarity)
+        #Low accuracy which is reducing the efficiency of the whole model.
         print(avg_similarity)
     # Find the disease with the highest average similarity
     # Find the index of the disease with the maximum average similarity
