@@ -1,0 +1,9 @@
+tensorflow==2.16.1
+numpy
+opencv-python
+Pillow
+pandas
+spacy
+requests
+beautifulsoup4
+flask
