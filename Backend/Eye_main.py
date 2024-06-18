@@ -26,6 +26,5 @@ def processed_img(img_path):
     # Return the predicted class label
     return result_ocular
 
-img_path='C:/Users/HP/Desktop/Dream_Anjali/EasyCheck/Fundus Endoscopy/cataract/_100_334408.jpg'
 predicted_result = processed_img(img_path)
-print(predicted_result)
+print(predicted_result) #this will console.log the result
