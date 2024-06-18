@@ -5,56 +5,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Input Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlkPVV6u7YGXNdg9taTYEBdYswcTXbyJHP6w&s");
-            /* Background image */
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
+        /* General Reset */
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(to right top, #6e9fc8, #a2c5d8); /* Gradient background */
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            margin: 0;
+            padding: 20px;
         }
 
         form {
-
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 40px;
             border-radius: 20px;
-            /* Rounded corners */
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             max-width: 800px;
             text-align: center;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+            overflow: hidden;
         }
 
         .input-section {
-            flex-basis: calc(50% - 10px);
-            margin-bottom: 30px;
+            flex-basis: calc(50% - 20px);
+            margin-bottom: 50px;
             text-align: left;
         }
 
         h1,
         h2 {
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 50px;
             color: #1e4857;
-            /* Dark pastel color */
             width: 100%;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             text-align: center;
-        }
-
-        h1 {
-            font-size: 32px;
-            /* Larger font size */
         }
 
         label {
@@ -62,27 +58,27 @@
             margin-bottom: 8px;
             color: #555555;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            /* Added text shadow */
-            font-size: 20px;
-            /* Font size */
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         input[type="text"],
         input[type="file"] {
-            width: calc(100% - 20px);
+            width: calc(100% - 24px);
             margin-bottom: 20px;
-            padding: 12px;
-            border: 1px solid #dddddd;
-            border-radius: 6px;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
             background-color: #f9f9f9;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         input[type="text"]:focus,
         input[type="file"]:focus {
             outline: none;
-            border-color: #007bff;
+            border-color: #5097ff;
+            box-shadow: 0 0 10px rgba(80, 151, 255, 0.5);
         }
 
         .button-wrapper {
@@ -92,24 +88,62 @@
 
         input[type="submit"] {
             background-color: #5097ff;
-            /* Soft pastel blue */
             color: #ffffff;
             border: none;
-            padding: 15px 40px;
+            padding: 16px 48px;
             border-radius: 25px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-            /* Added shadow effect */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
             font-size: 20px;
-            /* Larger font size */
+            outline: none;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
         }
 
         input[type="submit"]:hover {
             background-color: #88bdc9;
-            /* Darker shade on hover */
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-            /* Increased shadow effect on hover */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Custom File Upload Styling */
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .file-upload-label {
+            padding: 34px 54px;
+            background-color: #5097ff;
+            color: #ffffff;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 200px;
+            text-align: center;
+            margin: 10px auto;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .file-upload-label:hover {
+            background-color: #88bdc9;
+        }
+
+        .file-upload input[type='file'] {
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .input-section {
+                flex-basis: 100%;
+            }
+
+            .file-upload-label {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -118,22 +152,26 @@
     <form action="/submit" method="post" enctype="multipart/form-data">
         <h1>Enter Symptoms and Upload Images</h1>
         <div class="input-section">
-            <label for="symptoms">Symptoms:</label><br>
-            <input type="text" name="symptoms" required><br>
-            <input type="text" name="symptoms" required><br>
-            <input type="text" name="symptoms" required><br>
-            <input type="text" name="symptoms"><br>
-            <input type="text" name="symptoms"><br>
+            <label for="symptoms1">Symptoms 1:</label>
+            <input type="text" id="symptoms1" name="symptoms1" required><br>
+            <label for="symptoms2">Symptoms 2:</label>
+            <input type="text" id="symptoms2" name="symptoms2" required><br>
+            <label for="symptoms3">Symptoms 3:</label>
+            <input type="text" id="symptoms3" name="symptoms3" required><br>
+            <label for="symptoms4">Symptoms 4:</label>
+            <input type="text" id="symptoms4" name="symptoms4"><br>
+            <label for="symptoms5">Symptoms 5:</label>
+            <input type="text" id="symptoms5" name="symptoms5"><br>
         </div>
         <div class="input-section">
             <h2>Upload Images</h2>
-            <div style="margin-bottom: 20px;">
-                <label for="image1">Image 1:</label><br>
-                <input type="file" name="image1" accept="image/*" required><br>
+            <div class="file-upload">
+                <label class="file-upload-label" for="image1">Choose Image 1</label>
+                <input type="file" id="image1" name="image1" accept="image/*" required><br>
             </div>
-            <div>
-                <label for="image2">Image 2:</label><br>
-                <input type="file" name="image2" accept="image/*" required><br>
+            <div class="file-upload">
+                <label class="file-upload-label" for="image2">Choose Image 2</label>
+                <input type="file" id="image2" name="image2" accept="image/*" required><br>
             </div>
         </div>
         <div class="button-wrapper">
