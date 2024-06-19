@@ -53,6 +53,8 @@ Ensure you have the following installed:
     ```bash
     flask run
     ```
+## Application
+![image](https://github.com/blizet/EyeScan/assets/143063155/7b6e5baa-a9ac-49a5-a2ff-0ac42a549eb6)
 
 
 
